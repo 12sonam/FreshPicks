@@ -3,21 +3,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const productSection = document.querySelector('.product');
     const sectionsToHide = document.querySelectorAll('.hero, .service, .offers, .top-product, .testimonials, .enquiry');
     const footer = document.querySelector('footer');
+    
+    // Create a 'no match' message element
     let noMatchMessage = document.createElement('div');
     noMatchMessage.classList.add('no-match-message');
     noMatchMessage.innerText = 'No matching products found.';
 
+    // Add event listener for search input
     searchInput.addEventListener('input', function () {
         const searchTerm = searchInput.value.toLowerCase();
         if (searchTerm === '') {
+            // Clear products and show all sections if search term is empty
             clearProducts();
             removeNoMatchMessage();
             showSections();
         } else {
+            // Fetch and filter products based on search term
             fetchAndFilterProducts(searchTerm);
         }
     });
 
+    // Fetch products from API and filter them based on search term
     function fetchAndFilterProducts(searchTerm) {
         fetch('/api/getproducts')
             .then(response => {
@@ -43,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
+    // Display filtered products
     function showProducts(products) {
         productSection.innerHTML = '';
         products.forEach(product => {
@@ -52,10 +59,12 @@ document.addEventListener('DOMContentLoaded', function () {
         addWishlistAndCartFunctionality();
     }
 
+    // Clear the product display section
     function clearProducts() {
         productSection.innerHTML = '';
     }
 
+    // Create a product card element
     function createProductCard(product) {
         const card = document.createElement('div');
         card.classList.add('product-card');
@@ -86,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return card;
     }
 
+    // Generate star icons for product rating
     function getStarIcons() {
         return `
             <ion-icon name="star"></ion-icon>
@@ -96,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
     }
 
+    // Hide certain sections of the page
     function hideSections() {
         sectionsToHide.forEach(function (section) {
             section.style.display = 'none';
@@ -103,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
         footer.style.display = 'none';
     }
 
+    // Show certain sections of the page
     function showSections() {
         sectionsToHide.forEach(function (section) {
             section.style.display = '';
@@ -110,17 +122,20 @@ document.addEventListener('DOMContentLoaded', function () {
         footer.style.display = '';
     }
 
+    // Show the 'no match' message
     function showNoMatchMessage() {
         removeNoMatchMessage();
         searchInput.parentNode.insertBefore(noMatchMessage, searchInput.nextSibling);
     }
 
+    // Remove the 'no match' message
     function removeNoMatchMessage() {
         if (noMatchMessage.parentNode) {
             noMatchMessage.parentNode.removeChild(noMatchMessage);
         }
     }
 
+    // Add event listeners for 'Add to Wishlist' and 'Add to Cart' buttons
     function addWishlistAndCartFunctionality() {
         const addToWishlistButtons = document.querySelectorAll('.add-to-wishlist');
         const addToCartButtons = document.querySelectorAll('.add-to-cart');
@@ -144,31 +159,35 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Add item to the wishlist and update local storage
     function addToWishlist(productId, productName, productPrice) {
         let wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
         wishlistItems.push({ id: productId, name: productName, price: productPrice });
         localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
         console.log('Added to wishlist:', { id: productId, name: productName, price: productPrice });
         renderWishlist();
-        updateBadgeCount('wishlist');
+        updateBadgeCount('wishlist'); // Update wishlist badge
     }
-    
+
+    // Add item to the cart, remove from wishlist if already there, and update local storage
     function addToCart(productId, productName, productPrice) {
         let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
         cartItems.push({ id: productId, name: productName, price: productPrice });
         localStorage.setItem('cart', JSON.stringify(cartItems));
         console.log('Added to cart:', { id: productId, name: productName, price: productPrice });
-    
+
         // Remove from wishlist if already there
         let wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
         wishlistItems = wishlistItems.filter(item => item.id !== productId);
         localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
-    
+
         renderWishlist(); // Update wishlist display
         renderCart(); // Update cart display
-        updateBadgeCount('cart');
-    }    
+        updateBadgeCount('wishlist'); // Update wishlist badge
+        updateBadgeCount('cart'); // Update cart badge
+    }
 
+    // Render wishlist items in the wishlist panel
     function renderWishlist() {
         const wishlistPanel = document.querySelector('.wishlist-panel'); // Assuming you have a wishlist panel in your HTML
         if (!wishlistPanel) {
@@ -190,6 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Render cart items in the cart panel
     function renderCart() {
         const cartPanel = document.querySelector('.cart-panel'); // Assuming you have a cart panel in your HTML
         if (!cartPanel) {
@@ -211,9 +231,18 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Update the badge count for wishlist and cart
     function updateBadgeCount(type) {
         const items = JSON.parse(localStorage.getItem(type)) || [];
         const badge = document.querySelector(`.header-action-btn[data-panel-btn="${type}"] .btn-badge`);
-        badge.innerText = items.length.toString().padStart(2, '0');
+        if (badge) {
+            badge.innerText = items.length.toString().padStart(2, '0');
+        }
     }
+
+    // Initial render
+    renderWishlist();
+    renderCart();
+    updateBadgeCount('wishlist');
+    updateBadgeCount('cart');
 });
