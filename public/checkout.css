@@ -506,3 +506,14 @@ input[type=checkbox] {
 }
 
 
+
+.radio-label,
+.checkbox-label {
+    padding-top: 30px;
+    margin-bottom: 10px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+}

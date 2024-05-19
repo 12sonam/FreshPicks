@@ -1,179 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard</title>
-    <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="admin.css" >
 
-    <style>
-      .yessnoo{
-        display: flex;
-        justify-content: space-around;
-      }
-      #yess{
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 30px;
-        cursor: pointer;
-        font-size: 25px;
-        margin-top:20px;
-        width: 90px;
-      }
-      #Noo{
-        background-color: #ff0000;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 30px;
-        cursor: pointer;
-        font-size: 25px;
-        margin-top:20px;
-        width: 90px;
-      }
-      #confirm{
-        color:white;
-        font-size: 25px;
-        margin-top: 20px;
-      }
-    </style>    
-  </head>
-  <body>
-    <!-- =============== Navigation ================ -->
-    <div class="container">
-      <div class="navigation">
-        <ul>
-          <li>
-            <a href="#">
-              <span class="icon">
-                <img src="./assets/imgs/favicon.ico" alt="" />
-              </span>
-              <span class="title">FreshPicks</span>
-            </a>
-          </li>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <!-- ======= Styles ====== -->
+  <link rel="stylesheet" href="admin.css">
 
-          <li>
-            <a href="../admin.html">
-              <span class="icon">
-                <ion-icon name="home-outline"></ion-icon>
-              </span>
-              <span class="title">Dashboard</span>
-            </a> 
-          </li>
+  <style>
+    .yessnoo {
+      display: flex;
+      justify-content: space-around;
+    }
 
-          <li>
-            <a href="./Customermngmt/mngmt.html">
-              <span class="icon">
-                <ion-icon name="people-outline"></ion-icon>
-              </span>
-              <span class="title">Customers</span>
-            </a>
-          </li>
+    #yess {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 25px;
+      margin-top: 20px;
+      width: 90px;
+    }
 
-          <li>
-            <a href="./farmerMngmt/farmermngmt.html">
-              <span class="icon">
-                <ion-icon name="man-outline"></ion-icon>
-              </span>
-              <span class="title">Farmer</span>
-            </a>
-          </li>
+    #Noo {
+      background-color: #ff0000;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 25px;
+      margin-top: 20px;
+      width: 90px;
+    }
 
-          <li>
-            <a href="./ProductMngmt/prodmngmt.html">
-              <span class="icon">
-                <ion-icon name="cart-outline"></ion-icon>
-              </span>
-              <span class="title">Products</span>
-            </a>
-          </li>
+    #confirm {
+      color: white;
+      font-size: 25px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
 
-          <li>
-            <a href="javascript:void(0);" onclick="showLogoutForm()">
-              <span class="icon">
-                  <ion-icon name="log-out-outline"></ion-icon>
-              </span>
-              <span class="title">Sign Out</span>
+<body>
+  <!-- =============== Navigation ================ -->
+  <div class="container">
+    <div class="navigation">
+      <ul>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <img src="./assets/imgs/favicon.ico" alt="" />
+            </span>
+            <span class="title">FreshPicks</span>
           </a>
-          </li>
-          
-          <!-- Logout Form -->
-          <div id="logoutForm" style="display: none;">
-            <form id="confirmLogoutForm" action="adminlogin.html">
-              <p id="confirm">Are you sure you want to log out?</p>
-              <div class="yessnoo">
+        </li>
+
+        <li>
+          <a href="../admin.html">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./Customermngmt/mngmt.html">
+            <span class="icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="title">Customers</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./farmerMngmt/farmermngmt.html">
+            <span class="icon">
+              <ion-icon name="man-outline"></ion-icon>
+            </span>
+            <span class="title">Farmer</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./ProductMngmt/prodmngmt.html">
+            <span class="icon">
+              <ion-icon name="cart-outline"></ion-icon>
+            </span>
+            <span class="title">Products</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="javascript:void(0);" onclick="showLogoutForm()">
+            <span class="icon">
+              <ion-icon name="log-out-outline"></ion-icon>
+            </span>
+            <span class="title">Sign Out</span>
+          </a>
+        </li>
+
+        <!-- Logout Form -->
+        <div id="logoutForm" style="display: none;">
+          <form id="confirmLogoutForm" action="adminlogin.html">
+            <p id="confirm">Are you sure you want to log out?</p>
+            <div class="yessnoo">
               <button type="submit" id="yess">Yes</button>
-              <button type="button"id="Noo" onclick="hideLogoutForm()">No</button>
+              <button type="button" id="Noo" onclick="hideLogoutForm()">No</button>
             </div>
-            </form>
-          </div> 
-          
-        </ul>
+          </form>
+        </div>
+
+      </ul>
+    </div>
+
+    <!-- ========================= Main ==================== -->
+    <div class="main">
+      <div class="topbar">
+        <div class="toggle">
+          <ion-icon name="menu-outline"></ion-icon>
+        </div>
       </div>
 
-      <!-- ========================= Main ==================== -->
-      <div class="main">
-        <div class="topbar">
-          <div class="toggle">
-            <ion-icon name="menu-outline"></ion-icon>
+      <!-- ======================= Cards ================== -->
+      <div class="cardBox">
+
+        <div class="card">
+          <div>
+            <div class="numbers">100</div>
+            <div class="cardName">Total Sales</div>
+          </div>
+
+          <div class="iconBx">
+            <ion-icon name="stats-chart-outline"></ion-icon>
           </div>
         </div>
 
-        <!-- ======================= Cards ================== -->
-        <div class="cardBox">
-
-          <div class="card">
-            <div>
-              <div class="numbers">100</div>
-              <div class="cardName">Total Sales</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="stats-chart-outline"></ion-icon>
-            </div>
+        <div class="card">
+          <div>
+            <div class="numbers" id="totalProductsCount">100</div>
+            <div class="cardName">Total Products</div>
           </div>
 
-          <div class="card">
-            <div>
-              <div class="numbers" id="totalProductsCount">100</div>
-              <div class="cardName">Total Products</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="cart-outline"></ion-icon>
-            </div>
-          </div>
-          
-          <div class="card">
-            <div>
-              <div class="numbers">100</div>
-              <div class="cardName">Comments</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="chatbubbles-outline"></ion-icon>
-            </div>
-          </div>
-
-          <div class="card">
-            <div>
-              <div class="numbers">Rs 100</div>
-              <div class="cardName">Total Earning</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="cash-outline"></ion-icon>
-            </div>
+          <div class="iconBx">
+            <ion-icon name="cart-outline"></ion-icon>
           </div>
         </div>
 
+        <div class="card">
+          <div>
+            <div class="numbers">100</div>
+            <div class="cardName">Comments</div>
+          </div>
 
-        <!-- ================ Order Details List ================= -->
-        <div class="details">
+          <div class="iconBx">
+            <ion-icon name="chatbubbles-outline"></ion-icon>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="numbers">Rs 100</div>
+            <div class="cardName">Total Earning</div>
+          </div>
+
+          <div class="iconBx">
+            <ion-icon name="cash-outline"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ================ Order Details List ================= -->
+      <div class="details">
         <div class="recentOrders">
           <div class="cardHeader">
             <h2>Recent Orders</h2>
@@ -218,57 +223,93 @@
             </tbody>
           </table>
         </div>
-        
-         
 
-          
-          <div class="recentOrders">
-            <div class="cardHeader">
-              <h2>Top Products</h2>
-              <a href="#" class="btn">View All</a>
-            </div>
 
-            <table id="productTable">
-              <thead>
-                <tr>
-                  <td>Name</td>
-                  <td>Price</td>
-                </tr>
-              </thead>
-              <tbody> 
-                <!-- Product data will be dynamically added here -->
-                </tbody>                       
-              </body>
-            </table>
+
+
+        <div class="recentOrders">
+          <div class="cardHeader">
+            <h2>Top Products</h2>
+            <a href="#" class="btn">View All</a>
           </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- End of footer -->
+          <table id="productTable">
+            <thead>
+              <tr>
+                <td>Name</td>
+                <td>Price</td>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Product data will be dynamically added here -->
+            </tbody>
+</body>
+</table>
+</div>
+</div>
+</div>
+</div>
 
-    <!-- =========== Scripts =========  -->
-    <script src="admin.js"></script>
+<!-- End of footer -->
 
-    <!-- ====== ionicons ======= -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
-    
-    <script>
-    function showLogoutForm() {
-      document.getElementById("logoutForm").style.display = "block";
+<!-- =========== Scripts =========  -->
+<script src="admin.js"></script>
+
+<!-- ====== ionicons ======= -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script>
+  function showLogoutForm() {
+    document.getElementById("logoutForm").style.display = "block";
+  }
+
+  function hideLogoutForm() {
+    document.getElementById("logoutForm").style.display = "none";
+  }
+</script>
+
+<!--for fetching the data using the api showing that data in the admin table-->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Function to fetch checkout data
+    async function fetchCheckoutData() {
+      try {
+        const response = await fetch('/api/getcheckout');
+        if (!response.ok) {
+          throw new Error('Failed to fetch checkout data');
+        }
+        const data = await response.json();
+        console.log('Checkout Data:', data);
+        populateRecentOrders(data); // Call function to populate recent orders table
+      } catch (error) {
+        console.error('Error:', error.message);
+      }
     }
-    
-    function hideLogoutForm() {
-      document.getElementById("logoutForm").style.display = "none";
-    }
-    </script>
 
-  </body>
+    // Function to populate the recent orders table
+    function populateRecentOrders(data) {
+      const recentOrdersTable = document.querySelector('.recentOrders tbody');
+      recentOrdersTable.innerHTML = ''; // Clear previous data
+
+      data.forEach(order => {
+        order.selectedItems.forEach(item => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+                    <td>${item.title}</td>
+                    <td>Rs${item.price}</td>
+                    <td>${order.status || 'Pending'}</td> <!-- Assuming you might want to show status -->
+                `;
+          recentOrdersTable.appendChild(row);
+        });
+      });
+    }
+
+    // Fetch and render checkout data when the page loads
+    fetchCheckoutData();
+  });
+</script>
+
+</body>
+
 </html>

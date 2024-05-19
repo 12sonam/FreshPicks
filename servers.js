@@ -21,6 +21,7 @@ const customer_name = require("./GetRoutes/GetCustomerName.js");
 const Farmer_name = require('./GetRoutes/GetFarmer');
 const categoryInfo = require('./GetRoutes/GetCategory');
 const productController = require('./GetRoutes/GetProduct');
+const checkoutChontroller = require('./GetRoutes/GetCheckout');
 
 //For delete operations
 const detele_customer = require('./DeleteRoutes/deleteCustomer.js');
@@ -68,6 +69,7 @@ app.use('/api', customer_name);
 app.use('/api', Farmer_name);
 app.use('/api', categoryInfo);
 app.use('/api', productController);
+app.use('/api', checkoutChontroller);
 
 // For Delete Operation
 app.use('/api', detele_customer);

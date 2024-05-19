@@ -5,27 +5,30 @@ const checkoutSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    address:{
+    address: {
         type: String,
         required: true
     },
-    email:{
+    email: {
         type: String,
         required: true,
     },
-    phone:{
+    phone: {
         type: Number,
         required: true
     },
-    city:{
+    city: {
         type: String,
         required: true
     },
-    country:{
+    country: {
         type: String,
         required: true
     },
-    selectedItems: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Item' }] // Assuming 'Item' is your item schema
+    selectedItems: [{
+        title: String,
+        price: Number
+    }]
 }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } });
 
 module.exports = mongoose.model('Checkout', checkoutSchema);

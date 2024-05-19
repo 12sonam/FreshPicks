@@ -1379,34 +1379,34 @@
   <!-- #Enquiry form
    -->
    <div id="enquiries" class="enquiry">
-    <h2>Enquiry Form</h2>
-    <form id="enquiryForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="return validateEmail()">
+  <h2>Enquiry Form</h2>
+  <form id="enquiryForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="return validateEmail()">
+
+    <input type="hidden" name="access_key" value="6422cb2a-edf5-4c97-8235-ba42e6ba160a">
+
+    <input type="text" id="name" name="name" placeholder="Your name" required>
   
-      <input type="hidden" name="access_key" value="034f4d6a-8786-403e-8d43-138188b6745a">
+    <input type="text" id="email" name="email" placeholder="Your email" required>
   
-      <input type="text" id="name" name="name" placeholder="Your name" required>
-    
-      <input type="text" id="email" name="email" placeholder="Your email" required>
-    
-      <textarea id="message" name="message" placeholder="How can we help you?" style="height:100px" required></textarea>
-    
-      <input type="submit" value="Submit">
-    </form>
-  </div>
+    <textarea id="message" name="message" placeholder="How can we help you?" style="height:100px" required></textarea>
   
-  <script>
-    function validateEmail() {
-      const email = document.getElementById('email').value;
-      const emailPattern = /^[^@]+@gmail\.com$/;
-  
-      if (!emailPattern.test(email)) {
-        alert('Please enter a valid Gmail address (example@gmail.com)');
-        return false;
-      }
-      return true;
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<script>
+  function validateEmail() {
+    const email = document.getElementById('email').value;
+    const emailPattern = /^[^@]+@gmail\.com$/;
+
+    if (!emailPattern.test(email)) {
+      alert('Please enter a valid Gmail address (example@gmail.com)');
+      return false;
     }
-  </script>
-  
+    return true;
+  }
+</script>
+
   
 
   <!-- 
