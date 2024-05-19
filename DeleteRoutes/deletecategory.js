@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const deleteCategoryController = require('../deleteControllers/deleteCategory'); // Import the delete category controller
+const deleteCategoryController = require('../deleteControllers/deleteCategory'); 
 
-router.delete('/deletecategory/:id', deleteCategoryController); // Change the route to delete a category
+router.delete('/deletecategory/:id', deleteCategoryController); 
 
 module.exports = router;
