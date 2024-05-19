@@ -176,7 +176,7 @@
                 }
             };
 
-            // Redirect to update.html when the "Update" button is clicked
+            // Redirects to update.html when the "Update" button is clicked
             const redirectToUpdatePage = (customerId, name, address, email, password) => {
                 window.location.href =
                     `update.html?id=${customerId}&name=${encodeURIComponent(name)}&address=${encodeURIComponent(address)}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;

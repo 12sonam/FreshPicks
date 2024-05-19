@@ -151,7 +151,7 @@
     
     <!-- JavaScript -->
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('.form');
     form.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -188,40 +188,60 @@
                 }))
             };
 
-            // Send form data to the server
-            fetch('/api/checkout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
+            // Show confirmation dialog
+            Swal.fire({
+                title: 'Confirmation',
+                text: 'Do you want to place the order?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Okay',
+                cancelButtonText: 'Cancel',
+                allowOutsideClick: false,
+                allowEscapeKey: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Send form data to the server
+                    fetch('/api/checkout', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData),
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error('Failed to submit form');
+                        }
+                    })
+                    .then(data => {
+                        // Show success message after placing the order
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'Your order has been placed successfully!',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                        }).then(() => {
+                            window.location.href = 'user.html';
+                        });
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: error.message,
+                        });
+                    });
                 } else {
-                    throw new Error('Failed to submit form');
+                    // Order is canceled, show a cancellation message
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Cancelled',
+                        text: 'Your order has been canceled.',
+                    });
                 }
-            })
-            .then(data => {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: 'Your order has been placed successfully!',
-                    allowOutsideClick: false,
-                    allowEscapeKey: false
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = 'user.html';
-                    }
-                });
-            })
-            .catch(error => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: error.message,
-                });
             });
         }
     });
@@ -290,8 +310,10 @@
         window.location.href = 'user.html';
     });
 });
-
 </script>
+
+        
+        
 
 </body>
 

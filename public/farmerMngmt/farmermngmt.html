@@ -215,7 +215,7 @@
 
   <script>
    document.addEventListener('DOMContentLoaded', function () {
-    // Fetch customer data
+    // Fetch farmer data
     fetch('/api/getfarmer')
         .then(response => {
             if (!response.ok) {
@@ -224,18 +224,18 @@
             return response.json();
         })
         .then(data => {
-            // Populate the customer table
-            data.forEach(customer => {
+            // Populate the farmer table
+            data.forEach(farmer => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${customer.username}</td>
-                    <td>${customer.address}</td>
-                    <td>${customer.email}</td>
+                    <td>${farmer.username}</td>
+                    <td>${farmer.address}</td>
+                    <td>${farmer.email}</td>
                 `;
                 document.querySelector('#customerTable tbody').appendChild(row);
             });
 
-            // Update total number of customers
+            // Update total number of farmers
             const totalCustomersElement = document.querySelector('.numbers');
             totalCustomersElement.textContent = data.length;
         })

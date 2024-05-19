@@ -8,21 +8,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load wishlist items from local storage on page load
     loadWishlist();
   
-    addToWishlistButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            const productCard = button.closest('.product-card');
-            const productTitle = productCard.querySelector('.card-title a').innerText;
-            const productPrice = productCard.querySelector('.price').getAttribute('value');
-  
-            // Add the item to the wishlist
-            addToWishlist(productTitle, productPrice);
-  
-            // Update the subtotal
-            updateSubtotal();
-  
-            // Update wishlist badge count
-            updateBadgeCount();
-        });
+    addToWishlistButtons.forEach(function(button) {button.addEventListener('click', function() {
+        const productCard = button.closest('.product-card');
+        const productTitle = productCard.querySelector('.card-title a').innerText;
+        const productPrice = productCard.querySelector('.price').textContent.trim();
+    
+        // Add the item to the wishlist
+        addToWishlist(productTitle, productPrice);
+    
+        // Update the subtotal
+        updateSubtotal();
+    
+        // Update wishlist badge count
+        updateBadgeCount();
+    });
+    
+        
     });
   
     // Event listener for removing items from the wishlist
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
         renderWishlist();
     }
+    
   
     function removeFromWishlist(itemToRemove) {
         let wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];

@@ -1,8 +1,3 @@
-// Date Set up
-const dateElement = document.getElementById('date');
-if (dateElement) {
-  dateElement.innerHTML = new Date().getFullYear();
-}
 
 // Add hovered class to selected list item
 let listItems = document.querySelectorAll('.navigation li');

@@ -133,7 +133,7 @@
 
         <div class="card">
           <div>
-            <div class="numbers">100</div>
+            <div class="numbers">23</div>
             <div class="cardName">Total Sales</div>
           </div>
 
@@ -155,7 +155,7 @@
 
         <div class="card">
           <div>
-            <div class="numbers">100</div>
+            <div class="numbers">3</div>
             <div class="cardName">Comments</div>
           </div>
 
@@ -166,7 +166,7 @@
 
         <div class="card">
           <div>
-            <div class="numbers">Rs 100</div>
+            <div class="numbers">Rs 1,13,521</div>
             <div class="cardName">Total Earning</div>
           </div>
 
@@ -269,8 +269,7 @@
   }
 </script>
 
-<!--for fetching the data using the api showing that data in the admin table-->
-<script>
+<!--for fetching the data using the api showing that data in the admin table--><script>
   document.addEventListener('DOMContentLoaded', function () {
     // Function to fetch checkout data
     async function fetchCheckoutData() {
@@ -282,6 +281,7 @@
         const data = await response.json();
         console.log('Checkout Data:', data);
         populateRecentOrders(data); // Call function to populate recent orders table
+        updateTotalSales(data);     // Call function to update total sales
       } catch (error) {
         console.error('Error:', error.message);
       }
@@ -296,19 +296,27 @@
         order.selectedItems.forEach(item => {
           const row = document.createElement('tr');
           row.innerHTML = `
-                    <td>${item.title}</td>
-                    <td>Rs${item.price}</td>
-                    <td>${order.status || 'Pending'}</td> <!-- Assuming you might want to show status -->
-                `;
+            <td>${item.title}</td>
+            <td>Rs${item.price}</td>
+            <td>${order.status || 'Pending'}</td> <!-- Assuming you might want to show status -->
+          `;
           recentOrdersTable.appendChild(row);
         });
       });
+    }
+
+    // Function to update the total sales count
+    function updateTotalSales(data) {
+      const totalSalesElement = document.querySelector('.card .numbers');
+      const totalSales = data.length; // Assuming each order in data represents one sale
+      totalSalesElement.textContent = totalSales;
     }
 
     // Fetch and render checkout data when the page loads
     fetchCheckoutData();
   });
 </script>
+
 
 </body>
 
