@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Render wishlist items in the wishlist panel
     function renderWishlist() {
-        const wishlistPanel = document.querySelector('.wishlist-panel'); // Assuming you have a wishlist panel in your HTML
+        const wishlistPanel = document.querySelector('.wishlist-panel'); 
         if (!wishlistPanel) {
             console.error('Wishlist panel not found');
             return;
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Render cart items in the cart panel
     function renderCart() {
-        const cartPanel = document.querySelector('.cart-panel'); // Assuming you have a cart panel in your HTML
+        const cartPanel = document.querySelector('.cart-panel');
         if (!cartPanel) {
             console.error('Cart panel not found');
             return;
